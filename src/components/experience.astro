@@ -1,0 +1,184 @@
+---
+interface Job {
+  company: string;
+  client?: string;
+  role: string;
+  period: string;
+  link?: string;
+  highlights: string[];
+  stack?: string;
+}
+
+const jobs: Job[] = [
+  {
+    company: "TEKSystems",
+    client: "Fifth Third Bank",
+    role: "AI Engineer / Senior Android Developer",
+    period: "Mar 2026 - Present",
+    link: "https://play.google.com/store/apps/details?id=com.fifththird.commercial.ftd.mobile&hl=en_US",
+    highlights: [
+      "Leading development of the Commercial Business Application; owner of the Check Deposit and Payments flows.",
+      "Created harnesses, skills and rules to automate development of new Check Deposit and Payments features.",
+      "Designed check capture and deposit with the MiSnap library, meeting ADA / WCAG 2.1 AA with TalkBack, audio and haptic cues, and dynamic font scaling.",
+    ],
+    stack:
+      "Jetpack Compose, Android SDK, MVVM, Dagger Hilt, Retrofit, Coroutines, Flows, MiSnap, GitHub Copilot, Ollama",
+  },
+  {
+    company: "Insight Global",
+    client: "American Express",
+    role: "Senior Android Developer / Tech Lead / Platform Engineer",
+    period: "Aug 2024 - Jan 2026",
+    link: "https://play.google.com/store/apps/details?id=com.kabbage.mobile&pcampaignid=web_share",
+    highlights: [
+      "Led the architectural strategy to migrate the legacy Airbnb Epoxy UI framework to Jetpack Compose, adopted by multiple cross-functional teams.",
+      "Architected and built the AmexDS Design System (AmxDS) in Kotlin and Jetpack Compose, with accessibility built into every component.",
+      "Revamped the 'Pay Your Card' experience and improved performance by consolidating redundant API calls.",
+    ],
+    stack:
+      "Jetpack Compose, MVVM, Dagger 2, Retrofit, GraphQL, Coroutines, Flows, RxJava",
+  },
+  {
+    company: "Ibotta",
+    role: "Senior Android Developer / Tech Lead / Platform Engineer",
+    period: "May 2023 - Aug 2024",
+    link: "https://play.google.com/store/apps/details?id=com.ibotta.android&pcampaignid=web_share",
+    highlights: [
+      "Built the Digital Parking Lot (DPL) feature to surface post-purchase cash-back offers.",
+      "Engineered an anti-stacking and fraud prevention feature that boosted D2C earnings by approximately 25%.",
+      "Developed Spring Boot / JPA REST APIs and contributed to decomposing monolithic endpoints using Coroutines and Flows.",
+    ],
+    stack:
+      "Jetpack Compose, MVVM / MVI, Dagger 2, Retrofit, GraphQL, Arrow, Spring Boot, JPA",
+  },
+  {
+    company: "Photon Infotech",
+    client: "Citi",
+    role: "Tech Lead / Senior Android Developer",
+    period: "Jan 2021 - May 2023",
+    link: "https://play.google.com/store/apps/details?id=com.citi.citimobile&pcampaignid=web_share",
+    highlights: [
+      "Built the 'News & Insights' financial education feature and its self-assessment module.",
+      "Engineered the 'Make a Trade' module supporting Market, Limit, Stop, Stop-Limit, Fill-or-Kill and All-or-None orders.",
+      "Developed Spring Boot REST APIs for securities, ETFs and Mutual Funds; mentored and onboarded new team members.",
+    ],
+    stack:
+      "Android Jetpack, Navigation, LiveData, MVVM / MVI, Dagger 2, Retrofit, Coroutines, Spring Boot",
+  },
+  {
+    company: "Photon Infotech",
+    client: "JP Morgan Chase",
+    role: "Android Developer / Software Engineer",
+    period: "May 2019 - Dec 2020",
+    link: "https://play.google.com/store/apps/details?id=com.chase.sig.android&pcampaignid=web_share",
+    highlights: [
+      "Created the Manhattan Design System (MDS), a native Android component library adopted by the entire JPMC mobile division.",
+      "Built accessibility into every component: TalkBack descriptions, WCAG 2.1 AA contrast, dynamic text and compliant touch targets.",
+    ],
+    stack: "Java, Kotlin, Android SDK",
+  },
+  {
+    company: "Atos Syntel",
+    client: "Kroger Technologies",
+    role: "Android Developer",
+    period: "Mar 2019 - May 2019",
+    highlights: [
+      "Developed a Product Locator app for warehouse associates; defined release and branching strategy and applied TDD.",
+    ],
+  },
+  {
+    company: "Photon Infotech",
+    client: "Alliance Data Card Services",
+    role: "Tech Lead / Android Developer",
+    period: "Feb 2017 - Feb 2019",
+    highlights: [
+      "Delivered co-branded VISA and Mastercard credit card solutions for 15+ brands, including Victoria's Secret, LOFT and Express.",
+      "Led a team of 3 Android and 3 iOS developers; added coverage gates with Jacoco and Slather on a Jenkins pipeline.",
+    ],
+    stack: "Android Jetpack, MVVM / MVI, Dagger, Room, Coroutines",
+  },
+  {
+    company: "Earlier career",
+    role: "Service Delivery Manager / Software Architect / Tech Lead",
+    period: "Apr 2009 - Jul 2016",
+    highlights: [
+      "Altriatec (Coca-Cola FEMSA), CITEC / IAMSA Group, NEORIS (Dr Pepper Snapple Group), Accenture (Telefónica Movistar) and Secretaría de Hacienda y Crédito Público (Mexico).",
+      "Led a 50+ person nearshore support team, managed a $1.2M USD annual budget and led a legacy-to-C# migration of a national ticket sales system.",
+    ],
+    stack: "SAP, Java EE, Spring, Hibernate, C#",
+  },
+];
+---
+
+<section
+  id="experience"
+  class="py-12 border-t border-[#ffffff10] text-[var(--white)]"
+>
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">My career</h2>
+    <h3 class="text-4xl md:text-5xl font-medium mb-8">Experience</h3>
+
+    <ol class="space-y-6">
+      {
+        jobs.map((job) => (
+          <li class="rounded-2xl border border-[var(--white-icon-tr)] bg-[#1414149c] p-5 md:p-6">
+            <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
+              <h4 class="text-xl md:text-2xl font-semibold">
+                {job.link ? (
+                  <a
+                    href={job.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hover:text-[var(--sec)] transition-colors"
+                  >
+                    {job.company}
+                  </a>
+                ) : (
+                  job.company
+                )}
+                {job.client && (
+                  <span class="text-[var(--white-icon)] font-normal">
+                    {" "}
+                    · {job.client}
+                  </span>
+                )}
+              </h4>
+              <span class="text-sm text-[var(--white-icon)] whitespace-nowrap">
+                {job.period}
+              </span>
+            </div>
+            <p class="text-[var(--sec)] mt-1">{job.role}</p>
+            <ul class="mt-3 space-y-2 text-[var(--white-icon)] text-sm md:text-base list-disc pl-5">
+              {job.highlights.map((h) => <li>{h}</li>)}
+            </ul>
+            {job.stack && (
+              <p class="mt-3 text-xs md:text-sm text-[var(--white-icon)]">
+                <span class="text-[var(--white)]">Tech:</span> {job.stack}
+              </p>
+            )}
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10 text-[var(--white-icon)]">
+      <div>
+        <h4 class="text-xl font-semibold text-[var(--white)] mb-2">Education</h4>
+        <p>Bachelor's Degree, Computer Science</p>
+        <a
+          href="https://escom.ipn.mx"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-[var(--white)] transition-colors"
+        >
+          National Polytechnic Institute (IPN) - ESCOM, Mexico City
+        </a>
+      </div>
+      <div>
+        <h4 class="text-xl font-semibold text-[var(--white)] mb-2">Languages</h4>
+        <p>Spanish (Native)</p>
+        <p>English (Full Professional Proficiency)</p>
+      </div>
+    </div>
+  </div>
+</section>

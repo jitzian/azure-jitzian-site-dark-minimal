@@ -2,6 +2,7 @@
 
 interface Project {
   title: string;
+  description: string;
   image: string;
   link: string;
   preview: string;
@@ -10,32 +11,22 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "Project One",
-    image: "https://placehold.co/600x400/1a1a1a/ffffff?text=Project+One",
-    link: "https://github.com",
-    preview: "https://example.com",
-    status: "Deployed",
+    title: "Local Photo Search",
+    description:
+      "Search your photos with natural language, 100% locally, using EmbeddingGemma 2 and SQLite (sqlite-vec).",
+    image: "/projects/local-photo-search.svg",
+    link: "https://github.com/jitzian/local-photo-search",
+    preview: "https://github.com/jitzian/local-photo-search",
+    status: "Python · Open source",
   },
   {
-    title: "Project Two",
-    image: "https://placehold.co/600x400/1a1a1a/ffffff?text=Project+Two",
-    link: "https://github.com",
-    preview: "https://example.com",
-    status: "On Development",
-  },
-  {
-    title: "Project Three",
-    image: "https://placehold.co/600x400/1a1a1a/ffffff?text=Project+Three",
-    link: "https://github.com",
-    preview: "https://example.com",
-    status: "Contributor",
-  },
-  {
-    title: "Project Four",
-    image: "https://placehold.co/600x400/1a1a1a/ffffff?text=Project+Four",
-    link: "https://github.com",
-    preview: "https://example.com",
-    status: "Deployed",
+    title: "Daily English Agent",
+    description:
+      "AI agent (Spring Boot + Ktor + Ollama llama3.2) that posts a new English vocabulary word to Discord every day, backed by PostgreSQL and Docker.",
+    image: "/projects/daily-english-agent.svg",
+    link: "https://github.com/jitzian/daily-english-agent",
+    preview: "https://github.com/jitzian/daily-english-agent",
+    status: "Kotlin · Open source",
   },
 ];
 ---
@@ -71,6 +62,9 @@ const projects: Project[] = [
                   <span class="py-1 text-sm text-[var(--white-icon)]">
                     {project.status}
                   </span>
+                  <p class="text-sm text-[var(--white-icon)] mt-1">
+                    {project.description}
+                  </p>
                 </div>
                 <div class="flex gap-2 ml-auto">
                   <a
@@ -112,7 +106,7 @@ const projects: Project[] = [
     </div>
     <a
       target="_blank"
-      href="https://github.com"
+      href="https://github.com/jitzian"
       aria-label="GitHub"
       class="w-full flex items-center justify-center gap-2 mt-9 text-[var(--white-icon)] hover:text-white transition duration-300 ease-in-out border border-[var(--white-icon-tr)] p-3 rounded-full bg-[#1414149c] hover:bg-[var(--white-icon-tr)] hover:scale-105"
     >

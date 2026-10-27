@@ -1,20 +1,31 @@
 ---
 const technologies = [
-  "astro",
-  "vue",
-  "react",
-  "typeScript",
-  "tailwindcss",
-  "next",
-  "nodejs",
-  "HTML5",
-  "CSS3",
-  "javaScript",
-  "git",
-  "supabase",
+  "kotlin",
+  "android",
+  "java",
+  "spring",
+  "python",
+  "postgresql",
   "mysql",
+  "ollama",
+  "git",
   "bash",
+  "nodejs",
 ];
+
+const labels: Record<string, string> = {
+  kotlin: "Kotlin",
+  android: "Android",
+  java: "Java",
+  spring: "Spring Boot",
+  python: "Python",
+  postgresql: "PostgreSQL",
+  mysql: "MySQL",
+  ollama: "Ollama",
+  git: "Git",
+  bash: "Bash",
+  nodejs: "Node.js",
+};
 ---
 
 <div class="relative overflow-x-hidden py-8">
@@ -38,7 +49,7 @@ const technologies = [
             decoding="async"
           />
           <span class="text-lg font-medium text-[var(--white-icon)] whitespace-nowrap">
-            {tech.charAt(0).toUpperCase() + tech.slice(1)}
+            {labels[tech] ?? tech}
           </span>
         </div>
       ))
