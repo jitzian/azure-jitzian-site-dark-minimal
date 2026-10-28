@@ -56,11 +56,37 @@
             Send email
           </button>
         </form>
-        <div
-          id="form-message"
-          class="hidden justify-center items-center mt-4 text-[var(--white)] text-lg"
-        >
-          ✅ Your email app should open with your message ready to send.
+        <div id="form-message" class="hidden flex-col gap-3 mt-4 text-[var(--white)]">
+          <p>
+            ✅ Your message is ready. If your email app didn't open, use one of
+            these:
+          </p>
+          <div class="flex flex-wrap gap-2 text-sm">
+            <a
+              id="open-gmail"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-3 py-2 rounded-lg border border-[var(--white-icon-tr)] hover:bg-[var(--white-icon-tr)] transition-colors"
+              >Open in Gmail</a
+            >
+            <a
+              id="open-outlook"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-3 py-2 rounded-lg border border-[var(--white-icon-tr)] hover:bg-[var(--white-icon-tr)] transition-colors"
+              >Open in Outlook</a
+            >
+            <button
+              id="copy-message"
+              type="button"
+              class="px-3 py-2 rounded-lg border border-[var(--white-icon-tr)] hover:bg-[var(--white-icon-tr)] transition-colors"
+              >Copy message</button
+            >
+          </div>
+          <p class="text-sm text-[var(--white-icon)]">
+            Or write directly to
+            <span class="text-[var(--white)]">jonathan.sandoval@live.com</span>.
+          </p>
         </div>
       </div>
     </div>
@@ -68,19 +94,39 @@
 </section>
 
 <script type="module" is:inline>
+  const TO = "jonathan.sandoval@live.com";
   const form = document.getElementById("contact-form");
   const formMessage = document.getElementById("form-message");
 
-  // Static site with no backend: open the visitor's mail client with the message prefilled.
+  // Static site with no backend: hand the message to the visitor's mail client,
+  // and always offer webmail / copy fallbacks since many browsers have no mailto handler.
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const data = new FormData(form);
     const subject = `Portfolio contact from ${data.get("from_name")}`;
     const body = `${data.get("message")}\n\n${data.get("from_name")} <${data.get("reply_to")}>`;
-    window.location.href = `mailto:jonathan.sandoval@live.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    form.reset();
-    form.style.display = "none";
+    const q = (o) => new URLSearchParams(o).toString().replace(/\+/g, "%20");
+
+    document.getElementById("open-gmail").href =
+      "https://mail.google.com/mail/?" + q({ view: "cm", fs: "1", to: TO, su: subject, body });
+    document.getElementById("open-outlook").href =
+      "https://outlook.live.com/mail/0/deeplink/compose?" + q({ to: TO, subject, body });
+    document.getElementById("copy-message").onclick = async (ev) => {
+      try {
+        await navigator.clipboard.writeText(`To: ${TO}\nSubject: ${subject}\n\n${body}`);
+        ev.target.textContent = "Copied!";
+      } catch {
+        ev.target.textContent = "Copy failed";
+      }
+    };
+
     formMessage.classList.remove("hidden");
     formMessage.classList.add("flex");
+
+    const mailto = document.createElement("a");
+    mailto.href = `mailto:${TO}?` + q({ subject, body });
+    document.body.appendChild(mailto);
+    mailto.click();
+    mailto.remove();
   });
 </script>

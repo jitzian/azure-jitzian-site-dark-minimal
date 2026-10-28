@@ -23,9 +23,17 @@ const SkillsList = () => {
 
   const skills: Record<string, string[]> = {
     Mobile: [
-      "Modern Android Development (MAD) · Android SDK · Jetpack",
-      "Jetpack Compose · Kotlin Multiplatform (Compose)",
-      "Room · Coil / Glide / Picasso",
+      "Platform: Modern Android Development (MAD), Android SDK, Kotlin & Java, Material Design, RecyclerView, ViewPager, Looper / Handler, DataBinding, deep linking",
+      "Jetpack: Compose, Navigation (incl. Navigation 3 & type-safe routes), ViewModel, LiveData, Room, Paging, Lifecycle, WorkManager, Data Binding",
+      "Compose UI: LazyColumn / nested lists, live search, drag & drop, Google Maps, Compose Multiplatform, accessibility semantics",
+      "Multiplatform: Kotlin Multiplatform (KMP) and Compose Multiplatform for Android + iOS",
+      "Async & reactive: Kotlin Coroutines & Flows, RxJava / RxAndroid, Arrow",
+      "Networking: Retrofit, OkHttp, Volley, Ktor, GraphQL, REST, Moshi / Gson, MSAL & OAuth authentication",
+      "Dependency injection: Dagger 2, Dagger Hilt, Koin",
+      "Images & media: Coil, Glide, Picasso, MiSnap capture, barcode scanning",
+      "Architecture: Clean Architecture, MVVM, MVI, MVP, multi-module projects, convention plugins & Gradle Kotlin DSL",
+      "Quality: JUnit, Mockito, Robolectric, Espresso, Compose UI testing, TDD, TalkBack / WCAG 2.1 AA",
+      "Firebase, Google Maps, Android Pay, Gemini and on-device / local LLM (Ollama) integrations",
     ],
     "Architecture & Backend": [
       "MVVM · MVI · MVP",
@@ -92,7 +100,7 @@ const SkillsList = () => {
               <div
                 className={`transition-all duration-300 px-4 ${
                   openItem === category
-                    ? "max-h-[500px] pb-4 opacity-100"
+                    ? "max-h-[1200px] pb-4 opacity-100"
                     : "max-h-0 opacity-0"
                 }`}
               >
